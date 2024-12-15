@@ -2,13 +2,14 @@ package main;
 
 import config.Configuration;
 import core.TicketPool;
+import exceptions.InvalidConfigurationException;
 import logging.Logger;
 import threads.Customer;
 import threads.Vendor;
-import ui.CommandLineInterface;
+import UI.CommandLineInterface;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidConfigurationException {
         Configuration config = CommandLineInterface.configureSystem();
         TicketPool ticketPool = new TicketPool();
         Thread vendor = new Thread(new Vendor(ticketPool, config.getTicketReleaseRate()));

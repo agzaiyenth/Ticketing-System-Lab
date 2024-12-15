@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 
 public class Logger {
-    private static final String LOG_FILE = "resources/logs.txt";
+    private static final String LOG_FILE = "logs.txt";
 
     public static void log(String message) {
         String timeStampedMessage = LocalDateTime.now() + ": " + message;
