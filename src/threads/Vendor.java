@@ -19,7 +19,7 @@ public class Vendor extends AbstractTicketHandler implements Runnable {
             ticketPool.addTickets(ticket);
             Logger.log("Vendor added: " + ticket);
             try {
-                Thread.sleep(500);
+                Thread.sleep(ticketReleaseRate);
             } catch (InterruptedException e) {
                 Logger.log("Vendor interrupted.");
             }

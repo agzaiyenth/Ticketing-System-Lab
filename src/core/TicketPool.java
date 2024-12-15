@@ -20,4 +20,12 @@ public class TicketPool implements TicketOperation {
     public int getTicketCount() {
         return tickets.size();
     }
+
+    public String[] getAllTickets() {
+        return tickets.toArray(new String[tickets.size()]);
+    }
+
+    public void removeSpecificTicket(String ticket) {
+        tickets.remove(ticket);
+    }
 }
