@@ -1,6 +1,7 @@
 package config;
 
 import com.google.gson.Gson;
+import exceptions.InvalidConfigurationException;
 
 import java.io.*;
 
@@ -10,7 +11,13 @@ public class Configuration {
     private final int customerRetrievalRate;
     private final int maxTicketCapacity;
 
-    public Configuration(int totalTickets, int ticketReleaseRate, int customerRetrievalRate, int maxTicketCapacity) {
+    public Configuration(int totalTickets, int ticketReleaseRate, int customerRetrievalRate, int maxTicketCapacity) throws InvalidConfigurationException {
+        if (totalTickets <= 0 || ticketReleaseRate <= 0 || customerRetrievalRate <= 0 || maxTicketCapacity <= 0) {
+            throw new InvalidConfigurationException("All configuration values must be positive integers.");
+        }
+        if (totalTickets > maxTicketCapacity) {
+            throw new InvalidConfigurationException("Total tickets cannot exceed max ticket capacity.");
+        }
         this.totalTickets = totalTickets;
         this.ticketReleaseRate = ticketReleaseRate;
         this.customerRetrievalRate = customerRetrievalRate;

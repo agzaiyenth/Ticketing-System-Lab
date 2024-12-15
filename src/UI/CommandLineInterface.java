@@ -1,12 +1,13 @@
-package ui;
+package UI;
 
 import config.Configuration;
+import exceptions.InvalidConfigurationException;
 import logging.Logger;
 
 import java.util.Scanner;
 
 public class CommandLineInterface {
-    public static Configuration configureSystem() {
+    public static Configuration configureSystem() throws InvalidConfigurationException {
         Scanner scanner = new Scanner(System.in);
         Logger.log("Starting system configuration...");
         int totalTickets = getInput(scanner, "Enter Total Tickets: ");
